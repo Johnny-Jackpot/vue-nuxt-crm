@@ -4,7 +4,7 @@
 
 <template>
   <section class="dashboard">
-    <aside>Sidebar</aside>
+    <LayoutSidebar />
     <div>
       <slot/>
     </div>
