@@ -2,8 +2,9 @@
 export default defineNuxtConfig({
     compatibilityDate: '2024-04-03',
     devtools: {enabled: true},
-    modules: [
-        "@nuxt/image",
-        '@nuxtjs/tailwindcss',
-    ]
+    modules: ["@nuxt/image", '@nuxtjs/tailwindcss', "shadcn-nuxt"],
+    shadcn: {
+        prefix: '',
+        componentDir: './components/ui'
+    }
 })
