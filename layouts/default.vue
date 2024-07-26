@@ -3,7 +3,8 @@
 </script>
 
 <template>
-  <section>
+  <section class="dashboard">
+    <aside>Sidebar</aside>
     <div>
       <slot/>
     </div>
@@ -11,5 +12,9 @@
 </template>
 
 <style scoped>
-
+  .dashboard {
+    display: grid;
+    grid-template-columns: 1fr 6fr;
+    min-height: 100vh;
+  }
 </style>
