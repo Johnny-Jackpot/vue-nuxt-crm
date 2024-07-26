@@ -12,6 +12,7 @@ const logoWidth = 50;
           :width="logoWidth"
       />
     </NuxtLink>
+    <UiButton>Click me</UiButton>
   </aside>
 </template>
 
