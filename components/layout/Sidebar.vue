@@ -12,7 +12,9 @@ const logoWidth = 50;
           :width="logoWidth"
       />
     </NuxtLink>
-    <UiButton>Click me</UiButton>
+    <button class="absolute top-2 right-3 transition-colors hover:text-emerald-500 ">
+      <Icon name="line-md:logout" />
+    </button>
   </aside>
 </template>
 
