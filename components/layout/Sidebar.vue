@@ -13,7 +13,7 @@ const logoWidth = 50;
       />
     </NuxtLink>
     <button class="absolute top-2 right-3 transition-colors hover:text-emerald-500 ">
-      <Icon name="line-md:logout" />
+      <Icon name="line-md:logout" size="20" />
     </button>
   </aside>
 </template>
