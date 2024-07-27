@@ -1,4 +1,5 @@
 const animate = require("tailwindcss-animate")
+const colors = require('tailwindcss/colors')
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -49,6 +50,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
+        active: colors.emerald["500"]
       },
       borderRadius: {
       	xl: "calc(var(--radius) + 4px)",
