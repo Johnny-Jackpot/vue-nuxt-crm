@@ -3,7 +3,7 @@ const logoWidth = 50;
 </script>
 
 <template>
-  <aside class="px-5 py-8 relative h-full w-full bg-emerald-50">
+  <aside class="px-5 py-8 relative h-full w-full border-r-2">
     <NuxtLink to="/" class="block mb-10 mx-auto w-fit">
       <NuxtImg
           src="/logo.svg"
