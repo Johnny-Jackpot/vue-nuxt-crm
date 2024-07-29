@@ -46,9 +46,4 @@ export const MENU_DATA: IMenuItem[] = [
         url: '/help',
         icon: 'radix-icons:question-mark'
     },
-    {
-        name: 'Logout',
-        url: '/logout',
-        icon: 'line-md:logout'
-    },
 ];
