@@ -1,5 +1,20 @@
 <script setup lang="ts">
+import {useAuthStore} from "~/store/auth.store";
+import {useIsLoadingStore} from "~/store/loading.store";
+import {account} from "~/lib/appwrite";
+
 const logoWidth = 50;
+
+const authStore = useAuthStore();
+const isLoadingStore = useIsLoadingStore();
+const router = useRouter();
+const logout = async () => {
+  isLoadingStore.set(true);
+  await account.deleteSession('current');
+  authStore.clear();
+  await router.push('/login');
+  isLoadingStore.set(false);
+}
 </script>
 
 <template>
@@ -12,6 +27,9 @@ const logoWidth = 50;
           :width="logoWidth"
       />
     </NuxtLink>
+    <button class="absolute top-2 right-3 hover:text-active" @click="logout">
+      <Icon name="line-md:logout" size="20" />
+    </button>
     <LayoutMenu />
   </aside>
 </template>
