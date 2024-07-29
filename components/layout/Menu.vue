@@ -6,7 +6,7 @@ import {MENU_DATA} from "./menu.data";
   <div>
     <NuxtLink
         v-for="item in MENU_DATA"
-        class="flex items-center py-1 px-3 w-full mb-2 transition-all hover:text-active menu-link"
+        class="flex items-center py-1 px-3 w-full mb-2 transition-all hover:text-active"
         :key="item.name"
         :to="item.url"
     >
@@ -17,7 +17,5 @@ import {MENU_DATA} from "./menu.data";
 </template>
 
 <style scoped>
-.menu-link:last-child {
-  @apply border-t-2;
-}
+
 </style>
