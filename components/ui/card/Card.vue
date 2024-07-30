@@ -11,7 +11,8 @@ const props = defineProps<{
   <div
     :class="
       cn(
-        'rounded-xl border bg-card text-card-foreground shadow',
+        `rounded-xl bg-card text-card-foreground animation
+        border border-transparent transition-colors hover:border-active`,
         props.class,
       )
     "
@@ -19,3 +20,21 @@ const props = defineProps<{
     <slot />
   </div>
 </template>
+
+<style scoped>
+@keyframes show {
+  from {
+    @apply border-active;
+    transform: scale(0.5) translateY(-30px);
+    opacity: 0.4;
+  }
+
+  to {
+    @apply border-transparent;
+  }
+}
+
+.animation {
+  animation: show 0.3s ease-in-out;
+}
+</style>
