@@ -12,7 +12,7 @@ const props = defineProps<{
     :class="
       cn(
         `rounded-xl bg-card text-card-foreground animation
-        border border-transparent transition-colors hover:border-active`,
+        border border-transparent transition-colors hover:border-active p-3`,
         props.class,
       )
     "

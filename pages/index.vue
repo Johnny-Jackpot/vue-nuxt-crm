@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import type {ICard, IColumn} from "~/components/kanban/kanban.types";
 import {useKanbanQuery} from "~/components/kanban/useKanbanQuery";
+import {convertCurrency} from "~/lib/convertCurrency";
+import dayjs from "dayjs";
 
 useHead({
   title: 'Home | Vue CRM',
@@ -19,12 +21,13 @@ const {data, isLoading, refetch} = useKanbanQuery()
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
         <div v-for="(column, index) in data" :key="column.id">
-          <div class="rounded py-1 px-5 mb-2 text-center bg-slate-500 text-white">{{column.name}}</div>
+          <div class="rounded py-1 px-5 mb-2 text-center bg-slate-500 text-white">{{ column.name }}</div>
           <div>
-            <UiCard class="mb-3" draggable="true">
-              <UiCardHeader role="button">Name card</UiCardHeader>
-              <UiCardContent>Company</UiCardContent>
-              <UiCardFooter>Date</UiCardFooter>
+            <UiCard v-for="card in column.items" :key="card.id" class="mb-3" draggable="true">
+              <UiCardHeader role="button">{{ card.name }}</UiCardHeader>
+              <UiCardDescription>{{ convertCurrency(card.price) }}</UiCardDescription>
+              <UiCardContent>{{ card.companyName }}</UiCardContent>
+              <UiCardFooter>{{ dayjs(card.$createdAt).format('DD MMMM YYYY') }}</UiCardFooter>
             </UiCard>
           </div>
         </div>
