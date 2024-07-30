@@ -47,7 +47,7 @@ module.exports = {
           foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
+          DEFAULT: colors.slate['50'],
           foreground: "hsl(var(--card-foreground))",
         },
         active: '#00dc82',
