@@ -50,7 +50,7 @@ module.exports = {
           DEFAULT: "hsl(var(--card))",
           foreground: "hsl(var(--card-foreground))",
         },
-        active: colors.emerald["500"]
+        active: '#00dc82',
       },
       borderRadius: {
       	xl: "calc(var(--radius) + 4px)",
