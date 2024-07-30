@@ -29,7 +29,7 @@ const {data, isLoading, refetch} = useKanbanQuery()
                 <UiCardTitle></UiCardTitle>
                 <UiCardDescription>{{ convertCurrency(card.price) }}</UiCardDescription>
               </UiCardHeader>
-              <UiCardContent>{{ card.companyName }}</UiCardContent>
+              <UiCardContent class="text-sm">Company: {{ card.companyName }}</UiCardContent>
               <UiCardFooter>{{ dayjs(card.$createdAt).format('DD MMMM YYYY') }}</UiCardFooter>
             </UiCard>
           </div>
