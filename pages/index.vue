@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import type {ICard, IColumn} from "~/components/kanban/kanban.types";
+
 useHead({
   title: 'Home | Vue CRM',
 });
+
+const dragCardRef = ref<ICard|null>(null)
+const sourceColumnRed = ref<IColumn|null>(null)
+
 </script>
 
 <template>
