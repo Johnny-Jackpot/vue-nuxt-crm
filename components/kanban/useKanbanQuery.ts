@@ -32,6 +32,8 @@ export function useKanbanQuery() {
                     status: deal.status
                 });
             }
+
+            return newBoard;
         }
     });
 }
