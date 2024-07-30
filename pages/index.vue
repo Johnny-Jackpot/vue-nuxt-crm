@@ -1,5 +1,7 @@
 <script setup lang="ts">
-
+useHead({
+  title: 'Home | Vue CRM',
+});
 </script>
 
 <template>
