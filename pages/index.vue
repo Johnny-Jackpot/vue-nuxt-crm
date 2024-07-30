@@ -24,8 +24,11 @@ const {data, isLoading, refetch} = useKanbanQuery()
           <div class="rounded py-1 px-5 mb-2 text-center bg-slate-500 text-white">{{ column.name }}</div>
           <div>
             <UiCard v-for="card in column.items" :key="card.id" class="mb-3" draggable="true">
-              <UiCardHeader role="button">{{ card.name }}</UiCardHeader>
-              <UiCardDescription>{{ convertCurrency(card.price) }}</UiCardDescription>
+              <UiCardHeader role="button">
+                {{ card.name }}
+                <UiCardTitle></UiCardTitle>
+                <UiCardDescription>{{ convertCurrency(card.price) }}</UiCardDescription>
+              </UiCardHeader>
               <UiCardContent>{{ card.companyName }}</UiCardContent>
               <UiCardFooter>{{ dayjs(card.$createdAt).format('DD MMMM YYYY') }}</UiCardFooter>
             </UiCard>
