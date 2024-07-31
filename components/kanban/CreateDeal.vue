@@ -75,7 +75,7 @@ const onSubmit = handleSubmit((values) => {
           v-model="customerEmail"
           v-bind="customerEmailAttrs"
           placeholder="Customer Email"
-          type="text"
+          type="email"
           class="my-1"
       />
       <UiInput
