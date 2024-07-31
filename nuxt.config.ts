@@ -9,6 +9,7 @@ export default defineNuxtConfig({
         "@nuxtjs/google-fonts",
         "@nuxt/icon",
         '@pinia/nuxt',
+        '@vee-validate/nuxt',
     ],
     shadcn: {
         prefix: 'ui',
@@ -24,5 +25,16 @@ export default defineNuxtConfig({
     },
     pinia: {
         storesDirs: ['./stores/**',],
+    },
+    veeValidate: {
+        // disable or enable auto imports
+        autoImports: true,
+        // Use different names for components
+        componentNames: {
+            Form: 'VeeForm',
+            Field: 'VeeField',
+            FieldArray: 'VeeFieldArray',
+            ErrorMessage: 'VeeErrorMessage',
+        },
     },
 })
