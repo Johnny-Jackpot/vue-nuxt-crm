@@ -25,7 +25,7 @@ const props = defineProps({
 
 <template>
 <div class="text-center mb-2">
-  <button class="transition-all opacity-5 hover:opacity-100 hover:text-active" @click="open = !open">
+  <button class="transition-all hover:text-active" @click="open = !open">
     <Icon v-if="open" name="radix-icons:arrow-up" class="fade-in-100 fade-out-0"/>
     <Icon v-else name="radix-icons:plus-circled" class="fade-in-100 fade-out-0"/>
   </button>
