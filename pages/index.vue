@@ -23,6 +23,7 @@ const {data, isLoading, refetch} = useKanbanQuery()
         <div v-for="(column, index) in data" :key="column.id">
           <div class="rounded py-1 px-5 mb-2 text-center bg-slate-500 text-white">{{ column.name }}</div>
           <div>
+            <KanbanCreateDeal  />
             <UiCard v-for="card in column.items" :key="card.id" class="mb-3" draggable="true">
               <UiCardHeader role="button">
                 {{ card.name }}
