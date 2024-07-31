@@ -32,11 +32,11 @@ const {handleSubmit, defineField, handleReset} = useForm<IDealFormState>({
     status: props.status,
   },
   validationSchema: toTypedSchema(z.object({
-    name: z.string(),
-    price: z.number().positive(),
+    name: z.string().max(44),
+    price: z.number().positive().max(100000000),
     customer: z.object({
-      email: z.string().email(),
-      name: z.string(),
+      email: z.string().email().max(40),
+      name: z.string().max(40),
     })
   }))
 })
