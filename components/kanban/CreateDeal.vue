@@ -21,6 +21,17 @@ const props = defineProps({
   },
 })
 
+const {handleSubmit, defineField, handleReset} = useForm<IDealFormState>({
+  initialValues: {
+    status: props.status,
+  }
+})
+
+const [name, nameAttrs] = defineField('name');
+const [price, priceAttrs] = defineField('price');
+const [customerEmail, customerEmailAttrs] = defineField('customer.email');
+const [customerName, customerNameAttrs] = defineField('customer.name');
+e
 </script>
 
 <template>
