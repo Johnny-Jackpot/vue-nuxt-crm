@@ -4,6 +4,9 @@ import {v4 as uuid} from 'uuid';
 import {COLLECTION_DEALS, DB_ID} from "~/app.constants";
 import type {IDeal} from "~/types/deals.types";
 import {DB} from "~/lib/appwrite";
+import {toTypedSchema} from "@vee-validate/zod";
+import {z} from "zod";
+import type {PublicPathState} from "vee-validate";
 
 const open = ref<boolean>(false)
 
@@ -27,13 +30,27 @@ const props = defineProps({
 const {handleSubmit, defineField, handleReset} = useForm<IDealFormState>({
   initialValues: {
     status: props.status,
-  }
+  },
+  validationSchema: toTypedSchema(z.object({
+    name: z.string(),
+    price: z.number().positive(),
+    customer: z.object({
+      email: z.string().email(),
+      name: z.string(),
+    })
+  }))
 })
 
-const [name, nameAttrs] = defineField('name');
-const [price, priceAttrs] = defineField('price');
-const [customerEmail, customerEmailAttrs] = defineField('customer.email');
-const [customerName, customerNameAttrs] = defineField('customer.name');
+const fieldConfig = {
+  props: (state: PublicPathState<string>) => ({
+    errors: state.errors
+  })
+}
+
+const [name, nameAttrs] = defineField('name', fieldConfig);
+const [price, priceAttrs] = defineField('price', fieldConfig);
+const [customerEmail, customerEmailAttrs] = defineField('customer.email', fieldConfig);
+const [customerName, customerNameAttrs] = defineField('customer.name', fieldConfig);
 
 const {mutate, isPending} = useMutation({
   mutationKey: ['create a new deal'],
@@ -85,8 +102,11 @@ const onSubmit = handleSubmit((values) => {
           type="text"
           class="my-1"
       />
-      <UiButton @click="onSubmit" class="w-full" :disable="isPending" type="submit">
+      <UiButton @click="onSubmit" class="w-full my-1" :disable="isPending" type="submit">
         {{ isPending ? 'Loading...' : 'Add' }}
+      </UiButton>
+      <UiButton @click="handleReset" class="w-full my-1" :disable="isPending" type="button">
+        Reset
       </UiButton>
     </form>
   </div>
