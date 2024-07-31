@@ -3,10 +3,13 @@ import {useMutation} from "@tanstack/vue-query";
 import {v4 as uuid} from 'uuid';
 import {COLLECTION_DEALS, DB_ID} from "~/app.constants";
 import type {IDeal} from "~/types/deals.types";
+import {DB} from "~/lib/appwrite";
 
 const open = ref<boolean>(false)
 
-interface IDealFormState extends Pick<IDeal, 'name'|'price'> {
+const emit = defineEmits(['dealCreated'])
+
+interface IDealFormState extends Pick<IDeal, 'name' | 'price'> {
   customer: {
     email: string
     name: string
@@ -31,19 +34,59 @@ const [name, nameAttrs] = defineField('name');
 const [price, priceAttrs] = defineField('price');
 const [customerEmail, customerEmailAttrs] = defineField('customer.email');
 const [customerName, customerNameAttrs] = defineField('customer.name');
-e
+
+const {mutate, isPending} = useMutation({
+  mutationKey: ['create a new deal'],
+  mutationFn: (data: IDealFormState) => DB.createDocument(DB_ID, COLLECTION_DEALS, uuid(), data),
+  onSuccess() {
+    emit('dealCreated');
+    handleReset();
+  }
+})
+
+const onSubmit = handleSubmit((values) => {
+  mutate(values);
+});
+
 </script>
 
 <template>
-<div class="text-center mb-2">
-  <button class="transition-all hover:text-active" @click="open = !open">
-    <Icon v-if="open" name="radix-icons:arrow-up" class="fade-in-100 fade-out-0"/>
-    <Icon v-else name="radix-icons:plus-circled" class="fade-in-100 fade-out-0"/>
-  </button>
-  <form>
-
-  </form>
-</div>
+  <div class="text-center mb-2">
+    <button class="transition-all hover:text-active" @click="open = !open">
+      <Icon v-if="open" name="radix-icons:arrow-up" class="fade-in-100 fade-out-0"/>
+      <Icon v-else name="radix-icons:plus-circled" class="fade-in-100 fade-out-0"/>
+    </button>
+    <form v-if="open" @submit="onSubmit" class="form">
+      <UiInput
+          v-model="name"
+          v-bind="nameAttrs"
+          placeholder="Name"
+          type="text"
+          class="my-1"
+      />
+      <UiInput
+          v-model="price"
+          v-bind="priceAttrs"
+          placeholder="Price"
+          type="number"
+          class="my-1"
+      />
+      <UiInput
+          v-model="customerEmail"
+          v-bind="customerEmailAttrs"
+          placeholder="Customer Email"
+          type="text"
+          class="my-1"
+      />
+      <UiInput
+          v-model="customerName"
+          v-bind="customerNameAttrs"
+          placeholder="Customer Name"
+          type="text"
+          class="my-1"
+      />
+    </form>
+  </div>
 </template>
 
 <style scoped>
