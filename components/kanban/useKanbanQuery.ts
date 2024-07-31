@@ -1,11 +1,11 @@
-import {useQuery} from "@tanstack/vue-query";
+import {useQuery, type UseQueryReturnType, type DefaultError} from "@tanstack/vue-query";
 import {DB} from "~/lib/appwrite";
 import {COLLECTION_DEALS, DB_ID} from "~/app.constants";
 import {KANBAN_DATA} from "~/components/kanban/kanban.data";
 import type {IDeal} from "~/types/deals.types";
 import type {IColumn} from "~/components/kanban/kanban.types";
 
-export function useKanbanQuery() {
+export function useKanbanQuery(): UseQueryReturnType<IColumn[], DefaultError> {
     return useQuery({
         queryKey: ['deals'],
         queryFn: () => DB.listDocuments(DB_ID, COLLECTION_DEALS),
