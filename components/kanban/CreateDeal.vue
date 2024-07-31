@@ -85,6 +85,9 @@ const onSubmit = handleSubmit((values) => {
           type="text"
           class="my-1"
       />
+      <UiButton class="w-full" :disable="isPending" type="submit">
+        {{ isPending ? 'Loading...' : 'Add' }}
+      </UiButton>
     </form>
   </div>
 </template>
