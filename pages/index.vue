@@ -7,6 +7,7 @@ import type {EnumStatus} from "~/types/deals.types";
 import {useMutation} from "@tanstack/vue-query";
 import {DB} from "~/lib/appwrite";
 import {COLLECTION_DEALS, DB_ID} from "~/app.constants";
+import {useDealSlideStore} from "~/store/deal-slide.store";
 
 useHead({
   title: 'Home | Vue CRM',
@@ -49,6 +50,8 @@ function handleDrop(targetColumn: IColumn) {
   }
 }
 
+const dealSlideStore = useDealSlideStore()
+
 </script>
 
 <template>
@@ -57,6 +60,7 @@ function handleDrop(targetColumn: IColumn) {
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
+        <KanbanSlideover />
         <div
             v-for="(column, index) in data"
             :key="column.id"
@@ -72,6 +76,7 @@ function handleDrop(targetColumn: IColumn) {
                 class="mb-3"
                 draggable="true"
                 @dragstart="handleDragStart(card, column)"
+                @click="dealSlideStore.open(card)"
             >
               <UiCardHeader role="button">
                 {{ card.name }}
