@@ -4,11 +4,11 @@ export default defineNuxtConfig({
     devtools: {enabled: true},
     modules: [
         "@nuxt/image",
+        "@nuxt/ui",
         "shadcn-nuxt",
         "@nuxtjs/google-fonts",
         '@pinia/nuxt',
         '@vee-validate/nuxt',
-        "@nuxt/ui"
     ],
     shadcn: {
         prefix: 'ui',
