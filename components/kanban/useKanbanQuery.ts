@@ -10,7 +10,7 @@ export function useKanbanQuery(): UseQueryReturnType<IColumn[], DefaultError> {
         queryKey: ['deals'],
         queryFn: () => DB.listDocuments(DB_ID, COLLECTION_DEALS),
         select(data) {
-            const newBoard = [...KANBAN_DATA]
+            const newBoard = structuredClone(KANBAN_DATA);
             const newBoardMap: Map<string, IColumn> = new Map();
             for (const column of newBoard) {
                 newBoardMap.set(column.id, column);
