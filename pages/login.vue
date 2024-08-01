@@ -1,8 +1,10 @@
 <script setup lang="ts">
 import {v4 as uuid} from 'uuid';
 import {account} from "~/lib/appwrite";
-import {useIsLoadingStore} from "~/store/loading.store";
 import {useAuthStore} from "~/store/auth.store";
+import {loadingKey, type TypeLoading} from "~/layouts/useLoading";
+
+const {showLoading, hideLoading} = inject(loadingKey) as TypeLoading
 
 useHead({
   title: 'Login | Vue CRM',
@@ -12,12 +14,11 @@ const emailRef = ref('');
 const passwordRef = ref('');
 const nameRef = ref('');
 
-const isLoadingStore = useIsLoadingStore();
 const authStore = useAuthStore();
 const router = useRouter();
 
 const login = async () => {
-  isLoadingStore.loading = true;
+  showLoading()
   await account.createEmailPasswordSession(emailRef.value, passwordRef.value);
   const response = await account.get();
 
@@ -34,7 +35,7 @@ const login = async () => {
   nameRef.value = '';
 
   await router.push('/');
-  isLoadingStore.loading = false;
+  hideLoading()
 }
 
 const register = async () => {

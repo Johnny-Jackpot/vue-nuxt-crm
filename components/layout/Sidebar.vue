@@ -1,19 +1,20 @@
 <script setup lang="ts">
 import {useAuthStore} from "~/store/auth.store";
-import {useIsLoadingStore} from "~/store/loading.store";
 import {account} from "~/lib/appwrite";
+import {loadingKey, type TypeLoading} from "~/layouts/useLoading";
+
+const {showLoading, hideLoading} = inject(loadingKey) as TypeLoading
 
 const logoWidth = 50;
 
 const authStore = useAuthStore();
-const isLoadingStore = useIsLoadingStore();
 const router = useRouter();
 const logout = async () => {
-  isLoadingStore.loading = true;
+  showLoading()
   await account.deleteSession('current');
   authStore.clear();
   await router.push('/login');
-  isLoadingStore.loading = false;
+  hideLoading()
 }
 </script>
 
