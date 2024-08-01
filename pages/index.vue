@@ -1,5 +1,4 @@
 <script setup lang="ts">
-import type {ICard, IColumn} from "~/components/kanban/kanban.types";
 import {useKanbanQuery} from "~/components/kanban/useKanbanQuery";
 import {convertCurrency} from "~/lib/convertCurrency";
 import dayjs from "dayjs";
@@ -8,13 +7,12 @@ import {useMutation} from "@tanstack/vue-query";
 import {DB} from "~/lib/appwrite";
 import {COLLECTION_DEALS, DB_ID} from "~/app.constants";
 import {useDealSlideStore} from "~/store/deal-slide.store";
+import {useCardDragAndDrop} from "~/composables/useCardDragAndDrop";
 
 useHead({
   title: 'Home | Vue CRM',
 });
 
-const dragCardRef = ref<ICard | null>(null)
-const sourceColumnRef = ref<IColumn | null>(null)
 const {data, isLoading, refetch} = useKanbanQuery()
 
 type TypeMutationVariables = {
@@ -35,20 +33,9 @@ const {mutate} = useMutation({
   }
 })
 
-function handleDragStart(card: ICard, column: IColumn) {
-  dragCardRef.value = card
-  sourceColumnRef.value = column
-}
-
-function handleDragOver(event: DragEvent) {
-  event.preventDefault()
-}
-
-function handleDrop(targetColumn: IColumn) {
-  if (dragCardRef.value && sourceColumnRef.value) {
-    mutate({docId: dragCardRef.value.id, status: targetColumn.id});
-  }
-}
+const {handleDragOver, handleDragStart, handleDrop} = useCardDragAndDrop((card, targetColumn) => {
+  mutate({docId: card.id, status: targetColumn.id});
+})
 
 const dealSlideStore = useDealSlideStore()
 
@@ -60,7 +47,6 @@ const dealSlideStore = useDealSlideStore()
     <div v-if="isLoading">Loading...</div>
     <div v-else>
       <div class="grid grid-cols-5 gap-16">
-        <KanbanSlideover />
         <div
             v-for="(column, index) in data"
             :key="column.id"
@@ -90,6 +76,7 @@ const dealSlideStore = useDealSlideStore()
         </div>
       </div>
     </div>
+    <KanbanSlideover />
   </div>
 </template>
 
