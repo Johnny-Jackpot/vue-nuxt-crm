@@ -20,7 +20,7 @@ onMounted(async () => {
   } catch (e) {
     await router.push('/login');
   } finally {
-    isLoadingStore.set(false);
+    isLoadingStore.loading = false;
   }
 })
 </script>

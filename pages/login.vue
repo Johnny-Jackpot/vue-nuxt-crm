@@ -17,7 +17,7 @@ const authStore = useAuthStore();
 const router = useRouter();
 
 const login = async () => {
-  isLoadingStore.set(true);
+  isLoadingStore.loading = true;
   await account.createEmailPasswordSession(emailRef.value, passwordRef.value);
   const response = await account.get();
 
@@ -34,7 +34,7 @@ const login = async () => {
   nameRef.value = '';
 
   await router.push('/');
-  isLoadingStore.set(false);
+  isLoadingStore.loading = false;
 }
 
 const register = async () => {

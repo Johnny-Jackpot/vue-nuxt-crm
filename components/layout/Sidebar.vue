@@ -9,11 +9,11 @@ const authStore = useAuthStore();
 const isLoadingStore = useIsLoadingStore();
 const router = useRouter();
 const logout = async () => {
-  isLoadingStore.set(true);
+  isLoadingStore.loading = true;
   await account.deleteSession('current');
   authStore.clear();
   await router.push('/login');
-  isLoadingStore.set(false);
+  isLoadingStore.loading = false;
 }
 </script>
 

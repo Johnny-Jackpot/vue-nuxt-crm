@@ -1,15 +1,13 @@
 import type {ICard} from "~/components/kanban/kanban.types";
 
-const initialState: { card: ICard | null, open: boolean } = {
-    card: null,
-    open: false,
-}
-
 export const useDealSlideStore = defineStore('dealSlide', {
-    state: () => initialState,
+    state: (): { card: ICard | null, open: boolean } => ({
+        card: null,
+        open: false,
+    }),
     actions: {
         close() {
-            this.$patch(initialState)
+            this.$reset()
         },
         open(card: ICard) {
             this.$patch({card, open: true})
