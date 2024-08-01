@@ -37,8 +37,9 @@ const {handleSubmit, defineField, handleReset} = useForm<IDealFormState>({
     customer: z.object({
       email: z.string().email().max(40),
       name: z.string().max(40),
-    })
-  }))
+    }),
+    status: z.string(),
+  })),
 })
 
 const fieldConfig = {
@@ -62,6 +63,7 @@ const {mutate, isPending} = useMutation({
 })
 
 const onSubmit = handleSubmit((values) => {
+  debugger;
   mutate(values);
 });
 
