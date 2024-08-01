@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import {account} from "~/lib/appwrite";
-import {useIsLoadingStore} from "~/store/loading.store";
 import {useAuthStore} from "~/store/auth.store";
+import {useLoading} from "~/layouts/useLoading";
 
-const isLoadingStore = useIsLoadingStore();
+const {loading, hideLoading} = useLoading()
 const authStore = useAuthStore();
 const router = useRouter();
 
@@ -20,13 +20,13 @@ onMounted(async () => {
   } catch (e) {
     await router.push('/login');
   } finally {
-    isLoadingStore.loading = false;
+    hideLoading();
   }
 })
 </script>
 
 <template>
-  <LayoutLoader v-if="isLoadingStore.loading" />
+  <LayoutLoader v-if="loading" />
   <section v-else :class="{'dashboard': authStore.isAuth}">
     <LayoutSidebar v-if="authStore.isAuth"/>
     <div>
