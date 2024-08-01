@@ -16,9 +16,6 @@ export const useAuthStore = defineStore('auth', {
         isAuth: state => state.user.status,
     },
     actions: {
-        clear() {
-            this.$reset();
-        },
         set(input: IAuthStore) {
             this.$patch({user: input});
         }

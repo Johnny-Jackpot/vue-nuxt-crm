@@ -12,7 +12,7 @@ const router = useRouter();
 const logout = async () => {
   showLoading()
   await account.deleteSession('current');
-  authStore.clear();
+  authStore.$reset();
   await router.push('/login');
   hideLoading()
 }
