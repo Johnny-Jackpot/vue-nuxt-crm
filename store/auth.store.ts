@@ -4,22 +4,20 @@ interface IAuthStore {
     status: boolean
 }
 
-const defaultValue: {user: IAuthStore} = {
-    user: {
-        email: '',
-        name: '',
-        status: false,
-    }
-}
-
 export const useAuthStore = defineStore('auth', {
-    state: () => defaultValue,
+    state: (): {user: IAuthStore} => ({
+        user: {
+            email: '',
+            name: '',
+            status: false,
+        }
+    }),
     getters: {
         isAuth: state => state.user.status,
     },
     actions: {
         clear() {
-            this.$patch(defaultValue);
+            this.$reset();
         },
         set(input: IAuthStore) {
             this.$patch({user: input});
