@@ -18,7 +18,9 @@ const store = useDealSlideStore()
       {{ convertCurrency(store.card?.price || 0) }}
     </KanbanSlideoverLabel>
     <KanbanSlideoverLabel label-text="Status">
-      <!--  TODO: implement badge    -->
+      <UiBadge variant="outline">
+        {{store.card?.status}}
+      </UiBadge>
     </KanbanSlideoverLabel>
     <KanbanSlideoverLabel label-text="Client">
       {{ store.card?.companyName }}
