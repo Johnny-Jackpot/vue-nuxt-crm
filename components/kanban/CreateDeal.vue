@@ -75,7 +75,7 @@ const onSubmit = handleSubmit((values) => {
       <Icon v-if="open" name="radix-icons:arrow-up" class="fade-in-100 fade-out-0"/>
       <Icon v-else name="radix-icons:plus-circled" class="fade-in-100 fade-out-0"/>
     </button>
-    <form v-if="open" @submit="onSubmit" class="form">
+    <form v-if="open" @submit="onSubmit">
       <UiInput
           v-model="name"
           v-bind="nameAttrs"
