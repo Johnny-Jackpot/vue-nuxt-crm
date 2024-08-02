@@ -10,7 +10,7 @@ import {useDealSlideStore} from "~/store/deal-slide.store";
 import {useCardDragAndDrop} from "~/composables/useCardDragAndDrop";
 
 useHead({
-  title: 'Home | Vue CRM',
+  title: 'Home',
 });
 
 const {data, isLoading, refetch} = useKanbanQuery()

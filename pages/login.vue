@@ -7,7 +7,7 @@ import {loadingKey, type TypeLoading} from "~/layouts/useLoading";
 const {showLoading, hideLoading} = inject(loadingKey) as TypeLoading
 
 useHead({
-  title: 'Login | Vue CRM',
+  title: 'Login',
 });
 
 const emailRef = ref('');
