@@ -104,10 +104,10 @@ const onSubmit = handleSubmit((values) => {
           type="text"
           class="my-1"
       />
-      <UiButton @click="onSubmit" class="w-full my-1" :disable="isPending" type="submit">
+      <UiButton variant="outline" @click="onSubmit" class="w-full my-1" :disable="isPending" type="submit">
         {{ isPending ? 'Loading...' : 'Add' }}
       </UiButton>
-      <UiButton @click="handleReset" class="w-full my-1" :disable="isPending" type="button">
+      <UiButton variant="outline" @click="handleReset" class="w-full my-1" :disable="isPending" type="button">
         Reset
       </UiButton>
     </form>
