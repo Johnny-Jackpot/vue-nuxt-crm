@@ -42,7 +42,7 @@ const dealSlideStore = useDealSlideStore()
 </script>
 
 <template>
-  <div class="p-10">
+  <div>
     <h1 class="font-bold text-2xl mb-10">Vue CRM</h1>
     <div v-if="isLoading">Loading...</div>
     <div v-else>

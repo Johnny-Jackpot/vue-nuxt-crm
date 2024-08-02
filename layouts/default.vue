@@ -29,7 +29,7 @@ onMounted(async () => {
   <LayoutLoader v-if="loading" />
   <section v-else :class="{'dashboard': authStore.isAuth}">
     <LayoutSidebar v-if="authStore.isAuth"/>
-    <div>
+    <div class="p-10">
       <slot/>
     </div>
   </section>
