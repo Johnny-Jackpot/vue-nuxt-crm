@@ -59,7 +59,7 @@ const dealSlideStore = useDealSlideStore()
             <UiCard
                 v-for="card in column.items"
                 :key="card.id"
-                class="mb-3 cursor-pointer"
+                class="mb-3 cursor-pointer hover:border-slate-500"
                 draggable="true"
                 @dragstart="handleDragStart(card, column)"
                 @click="dealSlideStore.open(card)"
