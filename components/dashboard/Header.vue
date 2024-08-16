@@ -19,7 +19,9 @@ const buttonColor = computed(() => {
   return modalType.value === ModalType.ClearData ? "red" : "green";
 });
 
-const onConfirm = () => {};
+const onConfirm = () => {
+  alert(1);
+};
 </script>
 
 <template>
@@ -44,8 +46,18 @@ const onConfirm = () => {};
         </UButton>
       </div>
     </div>
-    <ConfirmModal v-model="isOpen" :button-color="buttonColor">
-      Confirm
+    <ConfirmModal
+      v-model="isOpen"
+      :button-color="buttonColor"
+      @confirm="onConfirm"
+    >
+      <span v-if="modalType === ModalType.LoadData">
+        Confirm test data loading
+      </span>
+      <span v-if="modalType === ModalType.ClearData">
+        Confirm deals and customers deleting
+      </span>
+      <span></span>
     </ConfirmModal>
   </section>
 </template>
