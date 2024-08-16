@@ -57,7 +57,6 @@ const onConfirm = () => {
       <span v-if="modalType === ModalType.ClearData">
         Confirm deals and customers deleting
       </span>
-      <span></span>
     </ConfirmModal>
   </section>
 </template>
