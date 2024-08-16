@@ -31,7 +31,7 @@ const { data, isLoading } = useQuery({
           v-for="customer in data?.documents as unknown as ICustomer[]"
           :key="customer.$id"
         >
-          <UiTableCell class="font-medium">
+          <UiTableCell class="font-medium cursor-pointer">
             <NuxtLink
               :href="`customers/edit/${customer.$id}`"
               class="hover:text-active"
