@@ -11,11 +11,11 @@ const isOpen = defineModel<boolean>();
 
 <template>
   <UModal v-model="isOpen">
-    <div class="p-6">
-      <h4 class="text-center mb-4">
+    <div class="p-4">
+      <h4 class="mb-4">
         <slot />
       </h4>
-      <div class="flex align-middle justify-center gap-2">
+      <div class="flex align-middle justify-end gap-2">
         <UButton
           size="lg"
           @click="
