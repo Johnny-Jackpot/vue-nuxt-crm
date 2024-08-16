@@ -72,7 +72,6 @@ const { mutate, isPending } = useMutation({
 });
 
 const onSubmit = handleSubmit((values) => {
-  debugger;
   mutate(values);
 });
 </script>
