@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import ConfirmModal from "~/components/ui/ConfirmModal.vue";
+
 const props = defineProps({
   isLoading: {
     type: Boolean,
@@ -42,36 +44,9 @@ const onConfirm = () => {};
         </UButton>
       </div>
     </div>
-    <UModal v-model="isOpen">
-      <div class="p-6">
-        <h4 class="text-center mb-4">
-          <span v-if="modalType === ModalType.LoadData">
-            Confirm test data loading
-          </span>
-          <span v-if="modalType === ModalType.ClearData">
-            Confirm deals and customers deleting
-          </span>
-        </h4>
-        <div class="flex align-middle justify-center gap-2">
-          <UButton
-            size="lg"
-            @click="
-              onConfirm();
-              isOpen = !isOpen;
-            "
-            :color="buttonColor"
-            >Confirm
-          </UButton>
-          <UButton
-            size="lg"
-            variant="outline"
-            @click="isOpen = !isOpen"
-            :color="buttonColor"
-            >Cancel
-          </UButton>
-        </div>
-      </div>
-    </UModal>
+    <ConfirmModal v-model="isOpen" :button-color="buttonColor">
+      Confirm
+    </ConfirmModal>
   </section>
 </template>
 
