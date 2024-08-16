@@ -1,11 +1,9 @@
 <script setup lang="ts">
 import dayjs from "dayjs";
-import {useDealSlideStore} from "~/store/deal-slide.store";
-import {convertCurrency} from "~/lib/convertCurrency";
+import { useDealSlideStore } from "~/store/deal-slide.store";
+import { convertCurrency } from "~/lib/convertCurrency";
 
-const store = useDealSlideStore()
-
-
+const store = useDealSlideStore();
 </script>
 
 <template>
@@ -19,18 +17,16 @@ const store = useDealSlideStore()
     </KanbanSlideoverLabel>
     <KanbanSlideoverLabel label-text="Status">
       <UiBadge variant="outline">
-        {{store.card?.status}}
+        {{ store.card?.status }}
       </UiBadge>
     </KanbanSlideoverLabel>
     <KanbanSlideoverLabel label-text="Client">
       {{ store.card?.companyName }}
     </KanbanSlideoverLabel>
     <KanbanSlideoverLabel label-text="Date created">
-      {{ dayjs(store.card?.$createdAt).format('DD MMMM YYYY') }}
+      {{ dayjs(store.card?.$createdAt).format("DD MMMM YYYY") }}
     </KanbanSlideoverLabel>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

@@ -1,4 +1,4 @@
-# Pet project: vue-nuxt-crm 
+# Pet project: vue-nuxt-crm
 
 ## Nuxt 3 Minimal Starter
 

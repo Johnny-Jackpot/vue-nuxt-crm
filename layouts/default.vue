@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import {account} from "~/lib/appwrite";
-import {useAuthStore} from "~/store/auth.store";
-import {useLoading} from "~/layouts/useLoading";
+import { account } from "~/lib/appwrite";
+import { useAuthStore } from "~/store/auth.store";
+import { useLoading } from "~/layouts/useLoading";
 
-const {loading, hideLoading} = useLoading()
+const { loading, hideLoading } = useLoading();
 const authStore = useAuthStore();
 const router = useRouter();
 
@@ -14,23 +14,23 @@ onMounted(async () => {
       authStore.set({
         email: user.email,
         name: user.name,
-        status: user.status
+        status: user.status,
       });
     }
   } catch (e) {
-    await router.push('/login');
+    await router.push("/login");
   } finally {
     hideLoading();
   }
-})
+});
 </script>
 
 <template>
   <LayoutLoader v-if="loading" />
-  <section v-else :class="{'dashboard': authStore.isAuth}">
-    <LayoutSidebar v-if="authStore.isAuth"/>
+  <section v-else :class="{ dashboard: authStore.isAuth }">
+    <LayoutSidebar v-if="authStore.isAuth" />
     <div class="p-10">
-      <slot/>
+      <slot />
     </div>
   </section>
 </template>

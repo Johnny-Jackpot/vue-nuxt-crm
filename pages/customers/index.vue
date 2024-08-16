@@ -1,18 +1,17 @@
 <script setup lang="ts">
-import {useQuery} from "@tanstack/vue-query";
-import {DB} from "~/lib/appwrite";
-import {COLLECTION_CUSTOMERS, DB_ID} from "~/app.constants";
-import type {ICustomer} from "~/types/deals.types";
+import { useQuery } from "@tanstack/vue-query";
+import { DB } from "~/lib/appwrite";
+import { COLLECTION_CUSTOMERS, DB_ID } from "~/app.constants";
+import type { ICustomer } from "~/types/deals.types";
 
 useHead({
-  title: 'Customers'
-})
+  title: "Customers",
+});
 
-const {data, isLoading} = useQuery({
-  queryKey: ['customers'],
-  queryFn: () => DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS)
-})
-
+const { data, isLoading } = useQuery({
+  queryKey: ["customers"],
+  queryFn: () => DB.listDocuments(DB_ID, COLLECTION_CUSTOMERS),
+});
 </script>
 
 <template>
@@ -28,20 +27,24 @@ const {data, isLoading} = useQuery({
         </UiTableRow>
       </UiTableHeader>
       <UiTableBody>
-        <UiTableRow v-for="customer in (data?.documents as unknown as ICustomer[])" :key="customer.$id">
+        <UiTableRow
+          v-for="customer in data?.documents as unknown as ICustomer[]"
+          :key="customer.$id"
+        >
           <UiTableCell class="font-medium">
-            <NuxtLink :href="`customers/edit/${customer.$id}`" class="hover:text-active">
+            <NuxtLink
+              :href="`customers/edit/${customer.$id}`"
+              class="hover:text-active"
+            >
               {{ customer.name }}
             </NuxtLink>
           </UiTableCell>
-          <UiTableCell>{{customer.email}}</UiTableCell>
-          <UiTableCell>{{customer.from_source}}</UiTableCell>
+          <UiTableCell>{{ customer.email }}</UiTableCell>
+          <UiTableCell>{{ customer.from_source }}</UiTableCell>
         </UiTableRow>
       </UiTableBody>
     </UiTable>
   </div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>

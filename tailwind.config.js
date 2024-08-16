@@ -1,12 +1,12 @@
-const animate = require("tailwindcss-animate")
-const colors = require('tailwindcss/colors')
+const animate = require("tailwindcss-animate");
+const colors = require("tailwindcss/colors");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
   darkMode: ["class"],
   safelist: ["dark"],
   prefix: "",
-  
+
   theme: {
     container: {
       center: true,
@@ -47,13 +47,13 @@ module.exports = {
           foreground: "hsl(var(--popover-foreground))",
         },
         card: {
-          DEFAULT: colors.slate['50'],
+          DEFAULT: colors.slate["50"],
           foreground: "hsl(var(--card-foreground))",
         },
-        active: '#00dc82',
+        active: "#00dc82",
       },
       borderRadius: {
-      	xl: "calc(var(--radius) + 4px)",
+        xl: "calc(var(--radius) + 4px)",
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
@@ -69,10 +69,10 @@ module.exports = {
         },
         "collapsible-down": {
           from: { height: 0 },
-          to: { height: 'var(--radix-collapsible-content-height)' },
+          to: { height: "var(--radix-collapsible-content-height)" },
         },
         "collapsible-up": {
-          from: { height: 'var(--radix-collapsible-content-height)' },
+          from: { height: "var(--radix-collapsible-content-height)" },
           to: { height: 0 },
         },
       },
@@ -85,4 +85,4 @@ module.exports = {
     },
   },
   plugins: [animate],
-}
+};

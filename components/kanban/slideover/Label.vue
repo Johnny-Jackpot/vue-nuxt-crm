@@ -2,22 +2,20 @@
 const props = defineProps({
   labelText: {
     type: String,
-    default: '',
-  }
-})
+    default: "",
+  },
+});
 </script>
 
 <template>
-<div class="mb-3">
-  <label v-if="labelText" class="opacity-75 mb-0.5 block text-xs">
-    {{labelText}}
-  </label>
-  <div class="text-base">
-    <slot />
+  <div class="mb-3">
+    <label v-if="labelText" class="opacity-75 mb-0.5 block text-xs">
+      {{ labelText }}
+    </label>
+    <div class="text-base">
+      <slot />
+    </div>
   </div>
-</div>
 </template>
 
-<style scoped>
-
-</style>
+<style scoped></style>
