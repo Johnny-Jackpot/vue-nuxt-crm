@@ -29,14 +29,18 @@ const {data, isSuccess} = useQuery({
   queryFn: () => DB.getDocument(DB_ID, COLLECTION_CUSTOMERS, customerId),
 })
 
-watch(data, (newData) => {
-  const initialData = newData as unknown as ICustomerFormState
-  setValues({
-    email: initialData.email,
-    from_source: initialData.from_source || '',
-    name: initialData.name,
-  })
-})
+watch(
+    data,
+    async (newData) => {
+      const initialData = newData as unknown as ICustomerFormState
+      setValues({
+        email: initialData.email,
+        from_source: initialData.from_source || '',
+        name: initialData.name,
+      })
+    },
+    {immediate: true}
+)
 
 const fieldConfig = {
   props: (state: PublicPathState<string>) => ({
